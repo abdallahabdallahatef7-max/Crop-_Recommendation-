@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>AI Crop Predictor | Premium</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Crop Advisor</h1>
+        <p style="opacity: 0.6; margin-bottom: 2rem;">Enter soil & climate metrics for AI analysis</p>
+        
+        <form action="/predict" method="post" class="input-grid">
+            <input type="number" step="any" name="N" placeholder="Nitrogen (N)" required>
+            <input type="number" step="any" name="P" placeholder="Phosphorus (P)" required>
+            <input type="number" step="any" name="K" placeholder="Potassium (K)" required>
+            <input type="number" step="any" name="temperature" placeholder="Temp °C" required>
+            <input type="number" step="any" name="humidity" placeholder="Humidity %" required>
+            <input type="number" step="any" name="ph" placeholder="Soil pH" required>
+            <input type="number" step="any" name="rainfall" placeholder="Rainfall mm" required>
+            
+            <button type="submit">Analyze Soil Data</button>
+        </form>
+
+        {% if result %}
+        <div class="result-card">
+            <h2>Optimal Crop Found:</h2>
+            <span class="crop-name">{{ result }}</span>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
